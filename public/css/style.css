@@ -106,10 +106,11 @@ body {
 
 .hero__title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-style: italic;
+  font-weight: 400;
   font-size: clamp(3rem, 6vw, 5.5rem);
   line-height: 1.1;
-  color: var(--creme);
+  color: #C4A882;
   margin-bottom: var(--spacing-md);
 }
 
