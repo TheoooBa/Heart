@@ -19,6 +19,14 @@ coeurS.addEventListener('click', function () {
   coeurQ.classList.remove('actif');
 });
 
+/* ── FAQ accordéon ── */
+
+document.querySelectorAll('.faq__question').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    btn.closest('.faq__item').classList.toggle('open');
+  });
+});
+
 /* ── Formulaire d'inscription ── */
 
 const form = document.getElementById('subscribe-form');
