@@ -14,9 +14,9 @@ const MODES = {
     subtitle: 'Pour les soirées, les retours tardifs, les moments où tu veux être vue.',
     title: 'Visible. Assumé. Pendentif.',
     lines: [
-      'Porté en pendentif sur décolleté — il se voit, c’est le but',
-      "Voyant rouge et voix au déclenchement : l’agresseur sait qu’il est filmé",
-      "L’incertitude est la dissuasion",
+      'Porté en pendentif sur décolleté — il se voit, c'est le but',
+      "Voyant rouge et voix au déclenchement : l'agresseur sait qu'il est filmé",
+      "L'incertitude est la dissuasion",
       'Chaîne fine dorée — un bijou qui te protège',
     ],
   },
@@ -37,40 +37,13 @@ function setMode(mode) {
   const content = document.getElementById('mode-content');
   const btnQuotidien = document.getElementById('mode-quotidien');
   const btnSoiree = document.getElementById('mode-soiree');
-  const heroOuter = document.getElementById('hero-heart-outer');
-  const heroInner = document.getElementById('hero-heart-inner');
   const isQuotidien = mode === 'quotidien';
 
-  // Fond, couleur de texte et taille de police du body
-  document.body.style.background = isQuotidien ? '#EDE4D8' : '#120B0E';
-  document.body.style.color = isQuotidien ? '#3D1A20' : '#F5EFE8';
-  document.body.style.fontSize = isQuotidien ? '110%' : '';
-
-  // Classe CSS pour les éléments avec couleur explicite
-  document.body.classList.toggle('theme-quotidien', isQuotidien);
-
-  // Grand cœur hero : les deux cœurs passent en bordeaux en mode crème
-  const heroStroke = isQuotidien ? '#7B1E2E' : '#EDE4D8';
-  const heroWidth  = isQuotidien ? '1.5' : '1';
-  if (heroOuter) { heroOuter.setAttribute('stroke', heroStroke); heroOuter.setAttribute('stroke-width', heroWidth); }
-  if (heroInner) { heroInner.setAttribute('stroke', heroStroke); heroInner.setAttribute('stroke-width', heroWidth); }
-
-  // Chaîne pendentif soirée : or en nuit, bordeaux en crème
-  document.querySelectorAll('.soiree-chain').forEach(el => {
-    el.setAttribute('stroke', isQuotidien ? '#7B1E2E' : '#C4A882');
-  });
-
-  // Cœurs interactifs — toujours opacity 1
-  btnQuotidien.style.opacity = '1';
-  btnSoiree.style.opacity = '1';
-
-  // État actif (scale CSS)
   btnQuotidien.classList.toggle('mode-item--active', isQuotidien);
   btnSoiree.classList.toggle('mode-item--active', !isQuotidien);
   btnQuotidien.setAttribute('aria-pressed', String(isQuotidien));
   btnSoiree.setAttribute('aria-pressed', String(!isQuotidien));
 
-  // Contenu — fade out / mise à jour / fade in
   content.classList.add('is-fading');
   setTimeout(() => {
     content.innerHTML = renderModeContent(mode);
