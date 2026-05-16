@@ -45,37 +45,53 @@
     </section>
 
     <!-- ── Deux façons de porter Heart ── -->
-    <section class="section-modes">
+    <section class="section-modes" id="deux-façons">
       <div class="container">
         <h2 class="section-title">Deux façons de porter Heart</h2>
-        <p class="modes-hint">— sélectionne ton modèle —</p>
-        <div class="modes-hearts">
+        <p class="invite">— sélectionne ton modèle —</p>
 
-          <button class="mode-item" id="mode-quotidien" type="button" aria-pressed="false">
-            <svg class="mode-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
-              <path class="heart-path heart-path--quotidien"
+        <div class="coeurs-wrapper">
+
+          <div id="coeur-quotidien" class="coeur-btn">
+            <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#F5EFE8" stroke="#7B1E2E" stroke-width="2.5"
                 d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
             </svg>
-            <span class="mode-label">Quotidien</span>
-          </button>
+            <span class="label">Quotidien</span>
+            <span class="trait-actif"></span>
+          </div>
 
-          <button class="mode-item mode-item--active" id="mode-soiree" type="button" aria-pressed="true">
-            <svg class="mode-heart-svg" viewBox="0 -22 100 112" xmlns="http://www.w3.org/2000/svg">
-              <!-- Chaîne pendentif -->
-              <ellipse class="soiree-chain" cx="50" cy="-14" rx="4" ry="3"
+          <div id="coeur-soiree" class="coeur-btn actif">
+            <svg viewBox="0 -22 100 112" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="50" cy="-14" rx="4" ry="3"
                 fill="none" stroke="#C4A882" stroke-width="1"/>
-              <line class="soiree-chain" x1="50" y1="-11" x2="50" y2="7"
+              <line x1="50" y1="-11" x2="50" y2="7"
                 stroke="#C4A882" stroke-width="1"/>
-              <!-- Cœur plein bordeaux -->
-              <path class="heart-path heart-path--soiree"
-                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-                fill="#7B1E2E" stroke="#7B1E2E"/>
+              <path fill="#7B1E2E" stroke="#7B1E2E"
+                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
             </svg>
-            <span class="mode-label">Soirée</span>
-          </button>
+            <span class="label">Soirée</span>
+            <span class="trait-actif"></span>
+          </div>
 
         </div>
-        <div class="mode-content" id="mode-content" aria-live="polite"></div>
+
+        <div id="contenu-quotidien" class="contenu-coeur" style="display:none">
+          <p class="situation">Pour le bureau, les transports, le trajet du soir.</p>
+          <h3>Élégant. Discret. Magnétique.</h3>
+          <p>Sur le pull, la veste, ou glissé dans la poche</p>
+          <p>Discret si tu le choisis, visible si tu le décides</p>
+          <p>Alerte silencieuse envoyée à tes contacts au déclenchement</p>
+        </div>
+
+        <div id="contenu-soiree" class="contenu-coeur">
+          <p class="situation">Pour les soirées, les retours tardifs, les moments où tu veux être vue.</p>
+          <h3>Visible. Assumé. Pendentif.</h3>
+          <p>Porté en pendentif sur décolleté — il se voit, c'est le but</p>
+          <p>Voyant rouge et voix au déclenchement : l'agresseur sait qu'il est filmé</p>
+          <p>Chaîne fine dorée — un bijou qui te protège</p>
+        </div>
+
       </div>
     </section>
 
