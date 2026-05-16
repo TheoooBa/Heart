@@ -5,18 +5,19 @@ const MODES = {
     subtitle: 'Pour le bureau, les transports, le trajet du soir.',
     title: 'Élégant. Discret. Magnétique.',
     lines: [
-      "Se fixe sur n'importe quel vêtement, s'enlève en une seconde",
-      'Invisible sous la veste, présent quand ça compte',
-      "Alerte silencieuse envoyée à tes contacts si tu l'actives",
+      'Sur le pull, la veste, ou glissé dans la poche',
+      'Discret si tu le choisis, visible si tu le décides',
+      'Alerte silencieuse envoyée à tes contacts au déclenchement',
     ],
   },
   soiree: {
     subtitle: 'Pour les soirées, les retours tardifs, les moments où tu veux être vue.',
-    title: 'Visible. Assumé. Adhésif.',
+    title: 'Visible. Assumé. Pendentif.',
     lines: [
-      'Porté sur le torse — il se voit, c\'est le but',
-      "Voyant rouge et voix au déclenchement : l'agresseur sait qu'il est filmé",
-      "L'incertitude est la dissuasion",
+      'Porté en pendentif sur décolleté — il se voit, c’est le but',
+      "Voyant rouge et voix au déclenchement : l’agresseur sait qu’il est filmé",
+      "L’incertitude est la dissuasion",
+      'Chaîne fine dorée — un bijou qui te protège',
     ],
   },
 };
@@ -54,7 +55,12 @@ function setMode(mode) {
   if (heroOuter) { heroOuter.setAttribute('stroke', heroStroke); heroOuter.setAttribute('stroke-width', heroWidth); }
   if (heroInner) { heroInner.setAttribute('stroke', heroStroke); heroInner.setAttribute('stroke-width', heroWidth); }
 
-  // Cœurs interactifs — toujours opacity 1, jamais en dessous de 0.9
+  // Chaîne pendentif soirée : or en nuit, bordeaux en crème
+  document.querySelectorAll('.soiree-chain').forEach(el => {
+    el.setAttribute('stroke', isQuotidien ? '#7B1E2E' : '#C4A882');
+  });
+
+  // Cœurs interactifs — toujours opacity 1
   btnQuotidien.style.opacity = '1';
   btnSoiree.style.opacity = '1';
 

@@ -459,6 +459,67 @@ body.theme-quotidien .form__message--success { color: #3D1A20; }
 body.theme-quotidien .footer { color: rgba(61, 26, 32, 0.4); }
 
 
+/* ── Section "Trois façons de le porter" ── */
+.section-ports {
+  padding: var(--spacing-xl) var(--spacing-md);
+  border-top: 1px solid rgba(196, 168, 130, 0.15);
+  transition: border-color 0.4s ease;
+}
+
+body.theme-quotidien .section-ports {
+  border-top-color: rgba(123, 30, 46, 0.15);
+}
+
+.ports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.port-bloc {
+  padding: var(--spacing-md) var(--spacing-sm);
+}
+
+.port-bloc__label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 0.6rem;
+  transition: color 0.4s ease;
+}
+
+.port-bloc__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.port-bloc__desc {
+  font-size: 0.88rem;
+  opacity: 0.65;
+  line-height: 1.7;
+}
+
+.ports-note {
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+  margin-top: var(--spacing-sm);
+}
+
+body.theme-quotidien .port-bloc__label { color: #7B1E2E; }
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .hero {
@@ -476,6 +537,7 @@ body.theme-quotidien .footer { color: rgba(61, 26, 32, 0.4); }
   .mode-heart-svg { width: 110px; }
 
   .tech-grid { grid-template-columns: 1fr; }
+  .ports-grid { grid-template-columns: 1fr; }
 
   .section-title { text-align: left; }
   .section-sub { text-align: left; }
