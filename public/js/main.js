@@ -36,18 +36,26 @@ function setMode(mode) {
   const content = document.getElementById('mode-content');
   const btnQuotidien = document.getElementById('mode-quotidien');
   const btnSoiree = document.getElementById('mode-soiree');
+  const heroPath = document.getElementById('hero-heart-path');
   const isQuotidien = mode === 'quotidien';
 
-  // Fond et couleur de texte directement sur le body
-  document.body.style.background = isQuotidien ? '#F5EFE8' : '#120B0E';
-  document.body.style.color = isQuotidien ? '#7B1E2E' : '#F5EFE8';
+  // Fond, couleur de texte et taille de police du body
+  document.body.style.background = isQuotidien ? '#EDE4D8' : '#120B0E';
+  document.body.style.color = isQuotidien ? '#3D1A20' : '#F5EFE8';
+  document.body.style.fontSize = isQuotidien ? '110%' : '';
 
   // Classe CSS pour les éléments avec couleur explicite
   document.body.classList.toggle('theme-quotidien', isQuotidien);
 
-  // Opacités des cœurs
-  btnQuotidien.style.opacity = isQuotidien ? '1' : '0.5';
-  btnSoiree.style.opacity = isQuotidien ? '0.4' : '1';
+  // Grand cœur hero : stroke bordeaux en mode crème, crème en mode nuit
+  if (heroPath) {
+    heroPath.setAttribute('stroke', isQuotidien ? '#7B1E2E' : '#EDE4D8');
+    heroPath.setAttribute('stroke-width', isQuotidien ? '1.5' : '1');
+  }
+
+  // Cœurs interactifs — toujours opacity 1, jamais en dessous de 0.9
+  btnQuotidien.style.opacity = '1';
+  btnSoiree.style.opacity = '1';
 
   // État actif (scale CSS)
   btnQuotidien.classList.toggle('mode-item--active', isQuotidien);

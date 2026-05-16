@@ -2,7 +2,7 @@
 :root {
   --bordeaux: #7B1E2E;
   --nuit: #120B0E;
-  --creme: #F5EFE8;
+  --creme: #EDE4D8;
   --or: #C4A882;
   --rose: #E8C4C8;
 
@@ -200,7 +200,8 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: opacity 0.4s ease, transform 0.3s ease;
+  opacity: 1;
+  transition: transform 0.3s ease;
 }
 
 .mode-item--active {
@@ -217,16 +218,16 @@ body {
   display: block;
 }
 
-/* Heart path variants — opacities managed by JS */
+/* Heart path variants — couleurs fixes, opacités ≥ 0.9 toujours */
 .heart-path--quotidien {
   fill: #F5EFE8;
-  stroke: #F5EFE8;
-  stroke-width: 2;
+  stroke: #7B1E2E;
+  stroke-width: 2.5px;
 }
 
 .heart-path--soiree {
-  fill: var(--bordeaux);
-  stroke: none;
+  fill: #7B1E2E;
+  stroke: #7B1E2E;
 }
 
 .mode-label {
@@ -267,9 +268,10 @@ body {
 }
 
 .mode-content__lines {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.9rem;
 }
 
 .mode-content__line {
@@ -401,21 +403,24 @@ body {
   transition: color 0.5s ease;
 }
 
-/* ── Theme: Quotidien (light) — textes en bordeaux ── */
-body.theme-quotidien .nav-link { color: #7B1E2E; }
-body.theme-quotidien .hero__title { color: #7B1E2E; }
-body.theme-quotidien .hero__desc { color: rgba(123, 30, 46, 0.7); }
-body.theme-quotidien .section-title { color: #7B1E2E; }
-body.theme-quotidien .section-sub { color: rgba(123, 30, 46, 0.6); }
-body.theme-quotidien .mode-label { color: #7B1E2E; }
+/* ── Theme: Quotidien (light) — titres #3D1A20, secondaires #5C2D35 ── */
+body.theme-quotidien .nav-link { color: #3D1A20; }
+body.theme-quotidien .hero__title { color: #3D1A20; }
+body.theme-quotidien .hero__desc { color: #5C2D35; }
+body.theme-quotidien .section-title { color: #3D1A20; }
+body.theme-quotidien .section-sub { color: #5C2D35; }
+body.theme-quotidien .mode-label { color: #3D1A20; }
+body.theme-quotidien .mode-content__subtitle { color: #5C2D35; opacity: 1; }
+body.theme-quotidien .mode-content__title { color: #3D1A20; }
+body.theme-quotidien .mode-content__line { color: #5C2D35; opacity: 1; }
 body.theme-quotidien .form__input {
-  color: #7B1E2E;
-  background: rgba(123, 30, 46, 0.04);
+  color: #3D1A20;
+  background: rgba(61, 26, 32, 0.04);
 }
-body.theme-quotidien .form__input::placeholder { color: rgba(123, 30, 46, 0.35); }
-body.theme-quotidien .form__message { color: var(--bordeaux); }
-body.theme-quotidien .form__message--success { color: var(--bordeaux); }
-body.theme-quotidien .footer { color: rgba(123, 30, 46, 0.3); }
+body.theme-quotidien .form__input::placeholder { color: rgba(61, 26, 32, 0.35); }
+body.theme-quotidien .form__message { color: #3D1A20; }
+body.theme-quotidien .form__message--success { color: #3D1A20; }
+body.theme-quotidien .footer { color: rgba(61, 26, 32, 0.4); }
 
 /* section-tech always overrides theme for its own title */
 .section-tech .section-title { color: var(--nuit) !important; }

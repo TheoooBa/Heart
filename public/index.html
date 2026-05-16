@@ -32,8 +32,9 @@
       </div>
       <div class="hero__visual" aria-hidden="true">
         <svg class="hero-heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-            fill="none" stroke="#F5EFE8" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <path id="hero-heart-path"
+            d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+            fill="none" stroke="#EDE4D8" stroke-width="1" vector-effect="non-scaling-stroke"/>
         </svg>
       </div>
     </section>
@@ -47,8 +48,7 @@
           <button class="mode-item" id="mode-quotidien" type="button" aria-pressed="false">
             <svg class="mode-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
               <path class="heart-path heart-path--quotidien"
-                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-                fill="#F5EFE8" stroke="#F5EFE8" stroke-width="2"/>
+                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
             </svg>
             <span class="mode-label">Quotidien</span>
           </button>
@@ -56,7 +56,8 @@
           <button class="mode-item mode-item--active" id="mode-soiree" type="button" aria-pressed="true">
             <svg class="mode-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
               <path class="heart-path heart-path--soiree"
-                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
+                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+                fill="#7B1E2E" stroke="#7B1E2E"/>
             </svg>
             <span class="mode-label">Soirée</span>
           </button>
