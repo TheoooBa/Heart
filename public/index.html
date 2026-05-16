@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart — Tu n'as pas à subir.</title>
+  <meta name="description" content="Heart est un patch de sécurité discret pour femmes. Rejoins la liste et sois parmi les premières informées." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Heart</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <p class="hero__surtitre">Patch de sécurité pour femmes</p>
+        <h1 class="hero__title">Tu n'as pas à subir.</h1>
+        <p class="hero__desc">
+          Heart est un dispositif discret conçu pour t'accompagner dans les situations où tu te sens vulnérable —
+          sans que personne ne le sache.
+        </p>
+        <a href="#inscription" class="btn">Rejoindre la liste d'attente</a>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="patch-shape"></div>
+      </div>
+    </section>
+
+    <section class="section-features">
+      <div class="container">
+        <h2 class="section-title">Pensé pour toi. Invisible pour les autres.</h2>
+        <div class="features">
+          <div class="feature">
+            <span class="feature__icon">◇</span>
+            <h3>Discret</h3>
+            <p>Se porte sous les vêtements. Rien ne laisse deviner sa présence.</p>
+          </div>
+          <div class="feature">
+            <span class="feature__icon">◇</span>
+            <h3>Réactif</h3>
+            <p>Une pression suffit pour déclencher une alerte vers tes proches de confiance.</p>
+          </div>
+          <div class="feature">
+            <span class="feature__icon">◇</span>
+            <h3>Autonome</h3>
+            <p>Fonctionne même hors réseau. Conçu pour les moments où chaque seconde compte.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-form" id="inscription">
+      <div class="container container--narrow">
+        <h2 class="section-title">Sois parmi les premières.</h2>
+        <p class="section-sub">On te tient au courant dès que Heart est disponible. Aucun spam. Juste l'essentiel.</p>
+
+        <form id="subscribe-form" class="form" novalidate>
+          <div class="form__row">
+            <input
+              type="text"
+              id="prenom"
+              name="prenom"
+              placeholder="Ton prénom (optionnel)"
+              class="form__input"
+              autocomplete="given-name"
+            />
+          </div>
+          <div class="form__row">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Ton adresse email"
+              class="form__input"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <button type="submit" class="btn btn--full" id="submit-btn">
+            Je rejoins la liste
+          </button>
+          <p class="form__message" id="form-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Heart. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
