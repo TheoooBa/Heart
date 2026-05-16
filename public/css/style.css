@@ -188,6 +188,17 @@ body {
   border-top: 1px solid rgba(196, 168, 130, 0.15);
 }
 
+.modes-hint {
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #C4A882;
+  opacity: 0.6;
+  margin-bottom: var(--spacing-md);
+}
+
 .modes-hearts {
   display: flex;
   justify-content: center;
@@ -206,24 +217,38 @@ body {
   cursor: pointer;
   padding: 0;
   opacity: 1;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .mode-item--active {
   transform: scale(1.06);
 }
 
-.mode-item:hover {
+.mode-item:not(.mode-item--active):hover {
   transform: scale(1.04);
+}
+
+.mode-item:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
 }
 
 .mode-heart-svg {
   width: 160px;
   height: auto;
   display: block;
+  transition: filter 0.25s ease;
 }
 
-/* Heart path variants — couleurs fixes, opacités ≥ 0.9 toujours */
+.mode-item--active .mode-heart-svg {
+  filter: drop-shadow(0 0 6px rgba(196, 168, 130, 0.5));
+}
+
+.mode-item:not(.mode-item--active):hover .mode-heart-svg {
+  filter: drop-shadow(0 0 8px rgba(123, 30, 46, 0.6));
+}
+
+/* Heart path variants — couleurs fixes */
 .heart-path--quotidien {
   fill: #F5EFE8;
   stroke: #7B1E2E;
@@ -243,7 +268,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: none;
   color: #C4A882;
-  transition: color 0.4s ease, opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .mode-item--active .mode-label { opacity: 1; }
