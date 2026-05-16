@@ -200,17 +200,15 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 0.5;
+  transition: transform 0.3s ease;
 }
 
 .mode-item--active {
-  opacity: 1;
   transform: scale(1.06);
 }
 
 .mode-item:hover:not(.mode-item--active) {
-  opacity: 0.8;
+  transform: scale(1.02);
 }
 
 .mode-heart-svg {
@@ -222,15 +220,19 @@ body {
 /* Heart path variants */
 .heart-path--quotidien {
   fill: none;
-  stroke: var(--creme);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
+  stroke: #F5EFE8;
+  stroke-width: 2;
   transition: stroke 0.5s ease;
 }
 
 .heart-path--soiree {
   fill: var(--bordeaux);
   stroke: none;
+  transition: opacity 0.5s ease;
+}
+
+.mode-item:not(.mode-item--active) .heart-path--soiree {
+  opacity: 0.35;
 }
 
 .mode-label {
@@ -313,29 +315,34 @@ body {
 
 .tech-bloc {
   padding: var(--spacing-md);
-  border: 1px solid rgba(18, 11, 14, 0.1);
+  background: #FFFFFF;
+  border: 1px solid rgba(123, 30, 46, 0.15);
   border-radius: var(--radius);
 }
 
-.tech-bloc__name {
-  font-family: var(--font-display);
+.tech-bloc__label {
+  font-family: var(--font-body);
   font-weight: 300;
-  font-size: 1.3rem;
-  color: var(--bordeaux);
-  margin-bottom: 0.6rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(123, 30, 46, 0.4);
+  margin-bottom: 0.75rem;
 }
 
-.tech-bloc__situation {
+.tech-bloc__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.95rem;
-  color: rgba(18, 11, 14, 0.55);
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--bordeaux);
+  line-height: 1.3;
   margin-bottom: var(--spacing-sm);
 }
 
 .tech-bloc__desc {
   font-size: 0.88rem;
-  color: rgba(18, 11, 14, 0.75);
+  color: #4A3020;
   line-height: 1.75;
 }
 
@@ -406,7 +413,7 @@ body.theme-quotidien .hero__title { color: var(--nuit); }
 body.theme-quotidien .hero__desc { color: rgba(18, 11, 14, 0.7); }
 body.theme-quotidien .section-title { color: var(--nuit); }
 body.theme-quotidien .section-sub { color: rgba(18, 11, 14, 0.6); }
-body.theme-quotidien .heart-path--quotidien { stroke: var(--nuit); }
+body.theme-quotidien .heart-path--quotidien { stroke: #7B1E2E; }
 body.theme-quotidien .form__input {
   color: var(--nuit);
   background: rgba(18, 11, 14, 0.04);
