@@ -36,22 +36,31 @@ function setMode(mode) {
   const content = document.getElementById('mode-content');
   const btnQuotidien = document.getElementById('mode-quotidien');
   const btnSoiree = document.getElementById('mode-soiree');
+  const isQuotidien = mode === 'quotidien';
 
+  // Fond et couleur de texte directement sur le body
+  document.body.style.background = isQuotidien ? '#F5EFE8' : '#120B0E';
+  document.body.style.color = isQuotidien ? '#7B1E2E' : '#F5EFE8';
+
+  // Classe CSS pour les éléments avec couleur explicite
+  document.body.classList.toggle('theme-quotidien', isQuotidien);
+
+  // Opacités des cœurs
+  btnQuotidien.style.opacity = isQuotidien ? '1' : '0.5';
+  btnSoiree.style.opacity = isQuotidien ? '0.4' : '1';
+
+  // État actif (scale CSS)
+  btnQuotidien.classList.toggle('mode-item--active', isQuotidien);
+  btnSoiree.classList.toggle('mode-item--active', !isQuotidien);
+  btnQuotidien.setAttribute('aria-pressed', String(isQuotidien));
+  btnSoiree.setAttribute('aria-pressed', String(!isQuotidien));
+
+  // Contenu — fade out / mise à jour / fade in
   content.classList.add('is-fading');
-
   setTimeout(() => {
     content.innerHTML = renderModeContent(mode);
     content.classList.remove('is-fading');
   }, 250);
-
-  const isQuotidien = mode === 'quotidien';
-  document.body.classList.toggle('theme-quotidien', isQuotidien);
-
-  btnQuotidien.classList.toggle('mode-item--active', isQuotidien);
-  btnQuotidien.setAttribute('aria-pressed', String(isQuotidien));
-
-  btnSoiree.classList.toggle('mode-item--active', !isQuotidien);
-  btnSoiree.setAttribute('aria-pressed', String(!isQuotidien));
 }
 
 document.getElementById('mode-quotidien').addEventListener('click', () => setMode('quotidien'));

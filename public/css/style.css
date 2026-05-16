@@ -33,7 +33,7 @@ body {
   letter-spacing: 0.04em;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* ── Layout ── */
@@ -200,15 +200,15 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: transform 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.3s ease;
 }
 
 .mode-item--active {
   transform: scale(1.06);
 }
 
-.mode-item:hover:not(.mode-item--active) {
-  transform: scale(1.02);
+.mode-item:hover {
+  transform: scale(1.04);
 }
 
 .mode-heart-svg {
@@ -217,22 +217,16 @@ body {
   display: block;
 }
 
-/* Heart path variants */
+/* Heart path variants — opacities managed by JS */
 .heart-path--quotidien {
-  fill: none;
+  fill: #F5EFE8;
   stroke: #F5EFE8;
   stroke-width: 2;
-  transition: stroke 0.5s ease;
 }
 
 .heart-path--soiree {
   fill: var(--bordeaux);
   stroke: none;
-  transition: opacity 0.5s ease;
-}
-
-.mode-item:not(.mode-item--active) .heart-path--soiree {
-  opacity: 0.35;
 }
 
 .mode-label {
@@ -407,21 +401,21 @@ body {
   transition: color 0.5s ease;
 }
 
-/* ── Theme: Quotidien (light) ── */
-body.theme-quotidien .nav-link { color: var(--nuit); }
-body.theme-quotidien .hero__title { color: var(--nuit); }
-body.theme-quotidien .hero__desc { color: rgba(18, 11, 14, 0.7); }
-body.theme-quotidien .section-title { color: var(--nuit); }
-body.theme-quotidien .section-sub { color: rgba(18, 11, 14, 0.6); }
-body.theme-quotidien .heart-path--quotidien { stroke: #7B1E2E; }
+/* ── Theme: Quotidien (light) — textes en bordeaux ── */
+body.theme-quotidien .nav-link { color: #7B1E2E; }
+body.theme-quotidien .hero__title { color: #7B1E2E; }
+body.theme-quotidien .hero__desc { color: rgba(123, 30, 46, 0.7); }
+body.theme-quotidien .section-title { color: #7B1E2E; }
+body.theme-quotidien .section-sub { color: rgba(123, 30, 46, 0.6); }
+body.theme-quotidien .mode-label { color: #7B1E2E; }
 body.theme-quotidien .form__input {
-  color: var(--nuit);
-  background: rgba(18, 11, 14, 0.04);
+  color: #7B1E2E;
+  background: rgba(123, 30, 46, 0.04);
 }
-body.theme-quotidien .form__input::placeholder { color: rgba(18, 11, 14, 0.35); }
+body.theme-quotidien .form__input::placeholder { color: rgba(123, 30, 46, 0.35); }
 body.theme-quotidien .form__message { color: var(--bordeaux); }
 body.theme-quotidien .form__message--success { color: var(--bordeaux); }
-body.theme-quotidien .footer { color: rgba(18, 11, 14, 0.3); }
+body.theme-quotidien .footer { color: rgba(123, 30, 46, 0.3); }
 
 /* section-tech always overrides theme for its own title */
 .section-tech .section-title { color: var(--nuit) !important; }
