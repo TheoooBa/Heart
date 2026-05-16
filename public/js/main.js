@@ -1,6 +1,70 @@
+/* ── Interactive mode section ── */
+
+const MODES = {
+  quotidien: {
+    subtitle: 'Pour le bureau, les transports, le trajet du soir.',
+    title: 'Élégant. Discret. Magnétique.',
+    lines: [
+      "Se fixe sur n'importe quel vêtement, s'enlève en une seconde",
+      'Invisible sous la veste, présent quand ça compte',
+      "Alerte silencieuse envoyée à tes contacts si tu l'actives",
+    ],
+  },
+  soiree: {
+    subtitle: 'Pour les soirées, les retours tardifs, les moments où tu veux être vue.',
+    title: 'Visible. Assumé. Adhésif.',
+    lines: [
+      'Porté sur le torse — il se voit, c\'est le but',
+      "Voyant rouge et voix au déclenchement : l'agresseur sait qu'il est filmé",
+      "L'incertitude est la dissuasion",
+    ],
+  },
+};
+
+function renderModeContent(mode) {
+  const data = MODES[mode];
+  return `
+    <p class="mode-content__subtitle">${data.subtitle}</p>
+    <h3 class="mode-content__title">${data.title}</h3>
+    <ul class="mode-content__lines">
+      ${data.lines.map(l => `<li class="mode-content__line">${l}</li>`).join('')}
+    </ul>
+  `;
+}
+
+function setMode(mode) {
+  const content = document.getElementById('mode-content');
+  const btnQuotidien = document.getElementById('mode-quotidien');
+  const btnSoiree = document.getElementById('mode-soiree');
+
+  content.classList.add('is-fading');
+
+  setTimeout(() => {
+    content.innerHTML = renderModeContent(mode);
+    content.classList.remove('is-fading');
+  }, 250);
+
+  const isQuotidien = mode === 'quotidien';
+  document.body.classList.toggle('theme-quotidien', isQuotidien);
+
+  btnQuotidien.classList.toggle('mode-item--active', isQuotidien);
+  btnQuotidien.setAttribute('aria-pressed', String(isQuotidien));
+
+  btnSoiree.classList.toggle('mode-item--active', !isQuotidien);
+  btnSoiree.setAttribute('aria-pressed', String(!isQuotidien));
+}
+
+document.getElementById('mode-quotidien').addEventListener('click', () => setMode('quotidien'));
+document.getElementById('mode-soiree').addEventListener('click', () => setMode('soiree'));
+
+setMode('soiree');
+
+/* ── Subscription form ── */
+
 const form = document.getElementById('subscribe-form');
 const submitBtn = document.getElementById('submit-btn');
-const message = document.getElementById('form-message');
+const messageEl = document.getElementById('form-message');
+const DEFAULT_BTN_TEXT = 'Je veux être prévenue au lancement';
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -14,7 +78,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Enregistrement…';
+  submitBtn.textContent = 'Envoi…';
   showMessage('');
 
   try {
@@ -28,8 +92,9 @@ form.addEventListener('submit', async (e) => {
 
     if (res.ok) {
       form.reset();
-      showMessage('Tu es sur la liste. On te tient au courant.', true);
-      submitBtn.textContent = 'Merci';
+      const nom = prenom ? prenom : null;
+      showMessage(nom ? `Merci ${nom}. On te tient au courant.` : 'Merci. On te tient au courant.', true);
+      submitBtn.textContent = DEFAULT_BTN_TEXT;
     } else {
       showMessage(data.error || 'Une erreur est survenue.', false);
       resetButton();
@@ -41,11 +106,11 @@ form.addEventListener('submit', async (e) => {
 });
 
 function showMessage(text, isSuccess = false) {
-  message.textContent = text;
-  message.className = 'form__message' + (isSuccess ? ' form__message--success' : '');
+  messageEl.textContent = text;
+  messageEl.className = 'form__message' + (isSuccess ? ' form__message--success' : '');
 }
 
 function resetButton() {
   submitBtn.disabled = false;
-  submitBtn.textContent = 'Je rejoins la liste';
+  submitBtn.textContent = DEFAULT_BTN_TEXT;
 }

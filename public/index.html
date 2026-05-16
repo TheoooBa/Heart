@@ -7,54 +7,100 @@
   <meta name="description" content="Heart est un patch de sécurité discret pour femmes. Rejoins la liste et sois parmi les premières informées." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <header class="header">
     <div class="logo">Heart</div>
+    <nav class="header__nav">
+      <a href="#inscription" class="nav-link">Inscription</a>
+      <a href="#technologie" class="nav-link">Technologie</a>
+    </nav>
   </header>
 
   <main>
+
+    <!-- ── Hero ── -->
     <section class="hero">
       <div class="hero__content">
         <p class="hero__surtitre">Patch de sécurité pour femmes</p>
         <h1 class="hero__title">Tu n'as pas à subir.</h1>
-        <p class="hero__desc">
-          Heart est un dispositif discret conçu pour t'accompagner dans les situations où tu te sens vulnérable —
-          sans que personne ne le sache.
-        </p>
+        <p class="hero__desc">Un cœur visible. Une protection réelle. Portée avec fierté.</p>
         <a href="#inscription" class="btn">Rejoindre la liste d'attente</a>
       </div>
       <div class="hero__visual" aria-hidden="true">
-        <div class="patch-shape"></div>
+        <svg class="hero-heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+            fill="none" stroke="#F5EFE8" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        </svg>
       </div>
     </section>
 
-    <section class="section-features">
+    <!-- ── Deux façons de porter Heart ── -->
+    <section class="section-modes">
       <div class="container">
-        <h2 class="section-title">Pensé pour toi. Invisible pour les autres.</h2>
-        <div class="features">
-          <div class="feature">
-            <span class="feature__icon">◇</span>
-            <h3>Discret</h3>
-            <p>Se porte sous les vêtements. Rien ne laisse deviner sa présence.</p>
+        <h2 class="section-title">Deux façons de porter Heart</h2>
+        <div class="modes-hearts">
+
+          <button class="mode-item" id="mode-quotidien" type="button" aria-pressed="false">
+            <svg class="mode-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+              <path class="heart-path heart-path--quotidien"
+                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
+            </svg>
+            <span class="mode-label">Quotidien</span>
+          </button>
+
+          <button class="mode-item mode-item--active" id="mode-soiree" type="button" aria-pressed="true">
+            <svg class="mode-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+              <path class="heart-path heart-path--soiree"
+                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
+            </svg>
+            <span class="mode-label">Soirée</span>
+          </button>
+
+        </div>
+        <div class="mode-content" id="mode-content" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ── Ce qu'il y a dedans ── -->
+    <section class="section-tech" id="technologie">
+      <div class="container">
+        <h2 class="section-title">Ce qu'il y a dedans</h2>
+        <p class="tech-tagline">Une technologie pensée pour fonctionner quand tu en as besoin — pas dans les conditions idéales.</p>
+        <div class="tech-grid">
+
+          <div class="tech-bloc">
+            <h3 class="tech-bloc__name">Caméra grand angle</h3>
+            <p class="tech-bloc__situation">"Tu rentres seule après une soirée, quelqu'un te suit."</p>
+            <p class="tech-bloc__desc">La caméra s'active au déclenchement et filme vers l'agresseur. La vidéo est uploadée en temps réel — même si ton téléphone est dans ton sac.</p>
           </div>
-          <div class="feature">
-            <span class="feature__icon">◇</span>
-            <h3>Réactif</h3>
-            <p>Une pression suffit pour déclencher une alerte vers tes proches de confiance.</p>
+
+          <div class="tech-bloc">
+            <h3 class="tech-bloc__name">Module LTE-M intégré</h3>
+            <p class="tech-bloc__situation">"Ton téléphone est déchargé. Ou il est dans ta veste au vestiaire."</p>
+            <p class="tech-bloc__desc">Le patch contient sa propre connexion. Il envoie l'alerte sans avoir besoin de ton téléphone.</p>
           </div>
-          <div class="feature">
-            <span class="feature__icon">◇</span>
-            <h3>Autonome</h3>
-            <p>Fonctionne même hors réseau. Conçu pour les moments où chaque seconde compte.</p>
+
+          <div class="tech-bloc">
+            <h3 class="tech-bloc__name">GPS temps réel</h3>
+            <p class="tech-bloc__situation">"Tu es dans un endroit que tes proches ne connaissent pas."</p>
+            <p class="tech-bloc__desc">Ta position exacte part instantanément à 3 contacts de confiance. Ils voient où tu es en temps réel et peuvent appeler le 17 avec ta localisation.</p>
           </div>
+
+          <div class="tech-bloc">
+            <h3 class="tech-bloc__name">Alarme vocale dissuasive</h3>
+            <p class="tech-bloc__situation">"Quelqu'un s'approche de façon menaçante dans la rue."</p>
+            <p class="tech-bloc__desc">Une voix claire dit : «&nbsp;Vous êtes filmé, les secours sont alertés.&nbsp;» Une sirène, les gens l'ignorent. Une voix, l'agresseur hésite.</p>
+          </div>
+
         </div>
       </div>
     </section>
 
+    <!-- ── Formulaire ── -->
     <section class="section-form" id="inscription">
       <div class="container container--narrow">
         <h2 class="section-title">Sois parmi les premières.</h2>
@@ -62,33 +108,21 @@
 
         <form id="subscribe-form" class="form" novalidate>
           <div class="form__row">
-            <input
-              type="text"
-              id="prenom"
-              name="prenom"
-              placeholder="Ton prénom (optionnel)"
-              class="form__input"
-              autocomplete="given-name"
-            />
+            <input type="text" id="prenom" name="prenom" placeholder="Ton prénom (optionnel)"
+              class="form__input" autocomplete="given-name" />
           </div>
           <div class="form__row">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Ton adresse email"
-              class="form__input"
-              required
-              autocomplete="email"
-            />
+            <input type="email" id="email" name="email" placeholder="Ton adresse email"
+              class="form__input" required autocomplete="email" />
           </div>
           <button type="submit" class="btn btn--full" id="submit-btn">
-            Je rejoins la liste
+            Je veux être prévenue au lancement
           </button>
           <p class="form__message" id="form-message" aria-live="polite"></p>
         </form>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
