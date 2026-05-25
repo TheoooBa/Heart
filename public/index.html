@@ -48,21 +48,25 @@
         <p class="produit-subtitle reveal"><em>Chaque plaque est unique. Le motif se forme pendant la fabrication — aucune n'est identique.</em></p>
         <div class="produit-grid">
           <div class="produit-bijou reveal">
-            <svg class="bijou-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
-              <path id="bijou-heart-path"
-                d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-                fill="#C4A882" stroke="#C4A882" stroke-width="1"/>
-            </svg>
+            <div class="bijou-heart-wrap">
+              <div class="bijou-canvas-clip">
+                <canvas id="bijou-canvas"></canvas>
+              </div>
+              <svg class="bijou-heart-outline" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+                  fill="none" stroke="#F5EFE8" stroke-width="1" opacity="0.3" vector-effect="non-scaling-stroke"/>
+              </svg>
+            </div>
             <p class="bijou-note">Motif unique · Laqué · Interchangeable</p>
           </div>
           <div class="produit-info reveal">
             <p class="couleur-label">Choisis ta plaque</p>
             <div class="couleur-swatches">
-              <button class="swatch active" data-color="#C4A882" data-name="Or" style="background:#C4A882" aria-label="Or"></button>
-              <button class="swatch" data-color="#D4A090" data-name="Pêche" style="background:#D4A090" aria-label="Pêche"></button>
-              <button class="swatch" data-color="#7B8FA8" data-name="Turquoise" style="background:#7B8FA8" aria-label="Turquoise"></button>
-              <button class="swatch" data-color="#7B1E2E" data-name="Bordeaux" style="background:#7B1E2E" aria-label="Bordeaux"></button>
-              <button class="swatch" data-color="#1A1A1A" data-name="Noir" style="background:#1A1A1A" aria-label="Noir"></button>
+              <button class="swatch active" data-color="#C4A882" data-name="Or" data-palette="or" style="background:#C4A882" aria-label="Or"></button>
+              <button class="swatch" data-color="#D4A090" data-name="Pêche" data-palette="peche" style="background:#D4A090" aria-label="Pêche"></button>
+              <button class="swatch" data-color="#7B8FA8" data-name="Turquoise" data-palette="turquoise" style="background:#7B8FA8" aria-label="Turquoise"></button>
+              <button class="swatch" data-color="#7B1E2E" data-name="Bordeaux" data-palette="bordeaux" style="background:#7B1E2E" aria-label="Bordeaux"></button>
+              <button class="swatch" data-color="#1A1A1A" data-name="Noir" data-palette="noir" style="background:#1A1A1A" aria-label="Noir"></button>
             </div>
             <p class="couleur-active-name"><em>Or</em></p>
             <div class="produit-prix">

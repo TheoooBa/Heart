@@ -214,14 +214,32 @@ body {
   align-items: center;
 }
 
-.bijou-heart-svg {
+.bijou-heart-wrap {
+  position: relative;
   width: 250px;
-  height: auto;
-  display: block;
+  height: 250px;
+  flex-shrink: 0;
 }
 
-#bijou-heart-path {
-  transition: fill 0.4s ease, stroke 0.4s ease;
+.bijou-canvas-clip {
+  position: absolute;
+  inset: 0;
+  clip-path: path('M 125 217.5 C 45 172.5 5 137.5 5 92.5 C 5 55 30 30 65 30 C 87.5 30 107.5 42.5 125 62.5 C 142.5 42.5 162.5 30 185 30 C 220 30 245 55 245 92.5 C 245 137.5 205 172.5 125 217.5 Z');
+}
+
+#bijou-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: blur(28px);
+}
+
+.bijou-heart-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .bijou-note {
@@ -590,7 +608,10 @@ body {
   .hero__name { font-size: 3rem; }
 
   .produit-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .bijou-heart-svg { width: 180px; }
+  .bijou-heart-wrap { width: 180px; height: 180px; }
+  .bijou-canvas-clip {
+    clip-path: path('M 90 156.6 C 32.4 124.2 3.6 99 3.6 66.6 C 3.6 39.6 21.6 21.6 46.8 21.6 C 63 21.6 77.4 30.6 90 45 C 102.6 30.6 117 21.6 133.2 21.6 C 158.4 21.6 176.4 39.6 176.4 66.6 C 176.4 99 147.6 124.2 90 156.6 Z');
+  }
   .produit-info { align-items: center; }
   .couleur-swatches { justify-content: center; }
 
