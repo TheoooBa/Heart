@@ -1,10 +1,12 @@
-/* ── Opal heart animation ── */
+/* ── Opal heart animation with palettes ── */
+let setHeroPalette = null;
+
 function initOpalHeart() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
 
   const dpr = window.devicePixelRatio || 1;
-  const size = canvas.offsetWidth || 380;
+  const size = canvas.offsetWidth || 480;
 
   canvas.width = Math.round(size * dpr);
   canvas.height = Math.round(size * dpr);
@@ -12,16 +14,50 @@ function initOpalHeart() {
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  const COLORS = [
-    'rgba(147, 112, 219, 0.8)',
-    'rgba(100, 149, 237, 0.8)',
-    'rgba(255, 182, 193, 0.7)',
-    'rgba(255, 255, 255, 0.5)',
-    'rgba(196, 168, 130, 0.6)',
-    'rgba(123, 143, 168, 0.7)'
-  ];
+  const palettes = {
+    or: [
+      'rgba(147, 112, 219, 0.8)',
+      'rgba(212, 175, 55, 0.8)',
+      'rgba(255, 182, 193, 0.6)',
+      'rgba(255, 255, 255, 0.5)',
+      'rgba(196, 168, 130, 0.7)',
+      'rgba(240, 200, 120, 0.6)'
+    ],
+    peche: [
+      'rgba(212, 160, 144, 0.8)',
+      'rgba(255, 180, 150, 0.7)',
+      'rgba(240, 128, 128, 0.6)',
+      'rgba(255, 255, 255, 0.5)',
+      'rgba(147, 112, 219, 0.5)',
+      'rgba(255, 200, 170, 0.7)'
+    ],
+    turquoise: [
+      'rgba(64, 180, 200, 0.8)',
+      'rgba(100, 149, 237, 0.7)',
+      'rgba(72, 209, 204, 0.6)',
+      'rgba(255, 255, 255, 0.5)',
+      'rgba(147, 112, 219, 0.6)',
+      'rgba(100, 200, 220, 0.7)'
+    ],
+    bordeaux: [
+      'rgba(123, 30, 46, 0.9)',
+      'rgba(180, 50, 80, 0.8)',
+      'rgba(147, 112, 219, 0.6)',
+      'rgba(255, 255, 255, 0.4)',
+      'rgba(200, 80, 100, 0.7)',
+      'rgba(100, 20, 40, 0.8)'
+    ],
+    noir: [
+      'rgba(40, 40, 60, 0.8)',
+      'rgba(80, 80, 120, 0.7)',
+      'rgba(147, 112, 219, 0.5)',
+      'rgba(150, 150, 200, 0.4)',
+      'rgba(60, 60, 100, 0.6)',
+      'rgba(100, 100, 150, 0.5)'
+    ]
+  };
 
-  const blobs = COLORS.map(function (color) {
+  const blobs = palettes.or.map(function (color) {
     const speed = 0.3 + Math.random() * 0.5;
     const angle = Math.random() * Math.PI * 2;
     return {
@@ -31,19 +67,63 @@ function initOpalHeart() {
       vy: Math.sin(angle) * speed,
       r: size * (0.38 + Math.random() * 0.15),
       color: color,
+      fromColor: color,
+      toColor: color,
       opacity: 0.5 + Math.random() * 0.5,
       opacityDir: Math.random() < 0.5 ? 1 : -1,
       opacitySpeed: 0.003 + Math.random() * 0.004
     };
   });
 
-  function animate() {
-    ctx.clearRect(0, 0, size, size);
+  let transitionStart = null;
+  const TRANSITION_DURATION = 800;
 
+  function parseRgba(str) {
+    const m = str.match(/[\d.]+/g);
+    return [+m[0], +m[1], +m[2], +m[3]];
+  }
+
+  function lerpColor(from, to, t) {
+    const f = parseRgba(from);
+    const g = parseRgba(to);
+    return 'rgba(' +
+      Math.round(f[0] + (g[0] - f[0]) * t) + ', ' +
+      Math.round(f[1] + (g[1] - f[1]) * t) + ', ' +
+      Math.round(f[2] + (g[2] - f[2]) * t) + ', ' +
+      (f[3] + (g[3] - f[3]) * t).toFixed(2) + ')';
+  }
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+
+  setHeroPalette = function (paletteName) {
+    const target = palettes[paletteName];
+    if (!target) return;
+    blobs.forEach(function (blob, i) {
+      blob.fromColor = blob.color;
+      blob.toColor = target[i];
+    });
+    transitionStart = performance.now();
+  };
+
+  function animate(timestamp) {
+    ctx.clearRect(0, 0, size, size);
     ctx.fillStyle = '#0c0709';
     ctx.fillRect(0, 0, size, size);
-
     ctx.globalCompositeOperation = 'screen';
+
+    if (transitionStart !== null) {
+      const elapsed = timestamp - transitionStart;
+      const t = easeInOut(Math.min(elapsed / TRANSITION_DURATION, 1));
+      blobs.forEach(function (blob) {
+        blob.color = lerpColor(blob.fromColor, blob.toColor, t);
+      });
+      if (elapsed >= TRANSITION_DURATION) {
+        blobs.forEach(function (blob) { blob.fromColor = blob.toColor; });
+        transitionStart = null;
+      }
+    }
 
     blobs.forEach(function (blob) {
       blob.x += blob.vx;
@@ -60,7 +140,6 @@ function initOpalHeart() {
       const g = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.r);
       g.addColorStop(0, blob.color);
       g.addColorStop(1, 'rgba(0,0,0,0)');
-
       ctx.globalAlpha = blob.opacity;
       ctx.fillStyle = g;
       ctx.beginPath();
@@ -70,11 +149,10 @@ function initOpalHeart() {
 
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;
-
     requestAnimationFrame(animate);
   }
 
-  animate();
+  requestAnimationFrame(animate);
 }
 
 /* ── Bijou opal animation avec palettes ── */
@@ -232,7 +310,21 @@ function initBijouHeart() {
   requestAnimationFrame(animate);
 }
 
-/* ── Sélecteur de couleur ── */
+/* ── Sélecteur de couleur hero ── */
+function initHeroColorPicker() {
+  const items = document.querySelectorAll('.hero__color-item');
+  if (!items.length) return;
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function () {
+      items.forEach(function (i) { i.classList.remove('active'); });
+      item.classList.add('active');
+      if (setHeroPalette) setHeroPalette(item.dataset.palette);
+    });
+  });
+}
+
+/* ── Sélecteur de couleur bijou ── */
 function initColorPicker() {
   const swatches = document.querySelectorAll('.swatch');
   const nameEl = document.querySelector('.couleur-active-name');
@@ -333,5 +425,6 @@ function resetButton() {
 /* ── Init ── */
 initOpalHeart();
 initBijouHeart();
+initHeroColorPicker();
 initColorPicker();
 initScrollReveal();

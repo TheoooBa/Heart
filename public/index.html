@@ -25,20 +25,56 @@
 
     <!-- ── Hero ── -->
     <section class="hero">
-      <div class="hero__heart-wrap">
-        <div class="hero__canvas-clip">
-          <canvas id="hero-canvas"></canvas>
-        </div>
-        <svg class="hero-heart-outline" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-            fill="none" stroke="#F5EFE8" stroke-width="1" opacity="0.3" vector-effect="non-scaling-stroke"/>
-        </svg>
-      </div>
-      <div class="hero__content">
+
+      <div class="hero__left">
+        <p class="hero__tagline">Le bijou connecté qui protège.</p>
         <h1 class="hero__name">Heart</h1>
         <p class="hero__desc">Un bijou. Un bouton. Quelqu'un qui décroche toujours.</p>
+        <p class="hero__features">♡ Bijou · ◎ Alarme · ☏ Centrale 24h/24</p>
         <a href="#inscription" class="btn">Rejoindre la liste d'attente</a>
       </div>
+
+      <div class="hero__center">
+        <div class="hero__heart-wrap">
+          <div class="hero__canvas-clip">
+            <canvas id="hero-canvas"></canvas>
+          </div>
+          <svg class="hero-heart-outline" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+              fill="none" stroke="#F5EFE8" stroke-width="1" opacity="0.3" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <p class="hero__palette-label">PALETTE</p>
+        <button class="hero__color-item active" data-palette="or" type="button">
+          <span class="hero__color-name">Or</span>
+          <span class="hero__color-dot" style="background:#C4A882"></span>
+        </button>
+        <button class="hero__color-item" data-palette="peche" type="button">
+          <span class="hero__color-name">Pêche</span>
+          <span class="hero__color-dot" style="background:#D4A090"></span>
+        </button>
+        <button class="hero__color-item" data-palette="turquoise" type="button">
+          <span class="hero__color-name">Turquoise</span>
+          <span class="hero__color-dot" style="background:#7B8FA8"></span>
+        </button>
+        <button class="hero__color-item" data-palette="bordeaux" type="button">
+          <span class="hero__color-name">Bordeaux</span>
+          <span class="hero__color-dot" style="background:#7B1E2E"></span>
+        </button>
+        <button class="hero__color-item" data-palette="noir" type="button">
+          <span class="hero__color-name">Noir</span>
+          <span class="hero__color-dot" style="background:#1A1A1A"></span>
+        </button>
+      </div>
+
+      <div class="hero__scroll-indicator">
+        <div class="hero__scroll-line"></div>
+        <span class="hero__scroll-text">DÉCOUVRIR</span>
+      </div>
+
     </section>
 
     <!-- ── Section Produit ── -->
@@ -149,8 +185,8 @@
           <div class="etape reveal">
             <span class="etape__num">03</span>
             <div class="etape__body">
-              <h3 class="etape__titre">Quelqu'un décroche</h3>
-              <p class="etape__desc">Ta position GPS est envoyée à une centrale humaine 24h/24. Un opérateur appelle les secours avec ta localisation exacte. Pas un robot. Une personne.</p>
+              <h3 class="etape__titre">Quelqu'un t'appelle</h3>
+              <p class="etape__desc">Un opérateur de notre centrale 24h/24 t'appelle directement. Tu décroches et confirmes — fausse alerte ou situation réelle. Si tu ne décroches pas, les secours sont envoyés immédiatement avec ta position exacte.</p>
             </div>
           </div>
 
@@ -166,7 +202,7 @@
 
           <div class="faq__item">
             <button class="faq__question" type="button">Comment fonctionne Heart concrètement ?</button>
-            <div class="faq__answer"><p>Une double pression sur le bijou déclenche simultanément deux actions : une alarme sonore puissante s'active immédiatement, et ta position GPS est envoyée en temps réel à une centrale humaine disponible 24h/24. Un opérateur appelle les secours avec ta localisation exacte.</p></div>
+            <div class="faq__answer"><p>Une double pression sur le bijou déclenche simultanément l'alarme sonore et envoie ta position GPS à notre centrale humaine 24h/24. Un opérateur t'appelle directement — tu confirmes si c'est une fausse alerte ou une situation réelle. Si tu ne décroches pas dans les 30 secondes, les secours sont envoyés automatiquement avec ta localisation exacte.</p></div>
           </div>
 
           <div class="faq__item">
@@ -181,7 +217,7 @@
 
           <div class="faq__item">
             <button class="faq__question" type="button">Qui reçoit l'alerte ?</button>
-            <div class="faq__answer"><p>Une centrale de télésurveillance humaine, disponible 24h/24 et 7j/7. Un opérateur reçoit ta position en temps réel et appelle les secours avec ta localisation exacte. Tu peux également configurer des contacts personnels dans l'application pour qu'ils reçoivent une notification simultanément.</p></div>
+            <div class="faq__answer"><p>Notre centrale de télésurveillance humaine, disponible 24h/24 et 7j/7. Un opérateur te rappelle directement après le déclenchement. Si tu ne décroches pas, il contacte immédiatement le 17 avec ta position exacte. Tu peux également configurer des contacts personnels dans l'application pour qu'ils reçoivent une notification simultanément.</p></div>
           </div>
 
           <div class="faq__item">
