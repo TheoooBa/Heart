@@ -1,31 +1,80 @@
-/* ── Sparkles ── */
-function initSparkles() {
-  const group = document.getElementById('sparkles');
-  if (!group) return;
+/* ── Opal heart animation ── */
+function initOpalHeart() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
 
-  const colors = ['#C4A882', '#E8C4C8', '#7B8FA8', '#D4A090', '#F5EFE8', '#7B1E2E'];
+  const dpr = window.devicePixelRatio || 1;
+  const size = canvas.offsetWidth || 380;
 
-  for (let i = 0; i < 80; i++) {
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    const cx = (5 + Math.random() * 90).toFixed(1);
-    const cy = (8 + Math.random() * 68).toFixed(1);
-    const r = (1.5 + Math.random() * 2.5).toFixed(1);
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const opacity = (0.4 + Math.random() * 0.5).toFixed(2);
-    const duration = (3 + Math.random() * 5).toFixed(1);
-    const delay = (Math.random() * 5).toFixed(1);
-    const moveY = -(8 + Math.random() * 14);
+  canvas.width = Math.round(size * dpr);
+  canvas.height = Math.round(size * dpr);
 
-    circle.setAttribute('cx', cx);
-    circle.setAttribute('cy', cy);
-    circle.setAttribute('r', r);
-    circle.setAttribute('fill', color);
-    circle.setAttribute('opacity', opacity);
-    circle.style.setProperty('--move-y', moveY.toFixed(0) + 'px');
-    circle.style.animation = 'sparkle-float ' + duration + 's ' + delay + 's ease-in-out infinite';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
 
-    group.appendChild(circle);
+  const COLORS = [
+    'rgba(147, 112, 219, 0.8)',
+    'rgba(100, 149, 237, 0.8)',
+    'rgba(255, 182, 193, 0.7)',
+    'rgba(255, 255, 255, 0.5)',
+    'rgba(196, 168, 130, 0.6)',
+    'rgba(123, 143, 168, 0.7)'
+  ];
+
+  const blobs = COLORS.map(function (color) {
+    const speed = 0.3 + Math.random() * 0.5;
+    const angle = Math.random() * Math.PI * 2;
+    return {
+      x: size * 0.15 + Math.random() * size * 0.7,
+      y: size * 0.15 + Math.random() * size * 0.7,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      r: size * (0.38 + Math.random() * 0.15),
+      color: color,
+      opacity: 0.5 + Math.random() * 0.5,
+      opacityDir: Math.random() < 0.5 ? 1 : -1,
+      opacitySpeed: 0.003 + Math.random() * 0.004
+    };
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, size, size);
+
+    ctx.fillStyle = '#0c0709';
+    ctx.fillRect(0, 0, size, size);
+
+    ctx.globalCompositeOperation = 'screen';
+
+    blobs.forEach(function (blob) {
+      blob.x += blob.vx;
+      blob.y += blob.vy;
+      if (blob.x < 0) { blob.x = 0; blob.vx *= -1; }
+      if (blob.x > size) { blob.x = size; blob.vx *= -1; }
+      if (blob.y < 0) { blob.y = 0; blob.vy *= -1; }
+      if (blob.y > size) { blob.y = size; blob.vy *= -1; }
+
+      blob.opacity += blob.opacityDir * blob.opacitySpeed;
+      if (blob.opacity >= 1.0) { blob.opacity = 1.0; blob.opacityDir = -1; }
+      if (blob.opacity <= 0.5) { blob.opacity = 0.5; blob.opacityDir = 1; }
+
+      const g = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.r);
+      g.addColorStop(0, blob.color);
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.globalAlpha = blob.opacity;
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(blob.x, blob.y, blob.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+
+    requestAnimationFrame(animate);
   }
+
+  animate();
 }
 
 /* ── Sélecteur de couleur ── */
@@ -129,6 +178,6 @@ function resetButton() {
 }
 
 /* ── Init ── */
-initSparkles();
+initOpalHeart();
 initColorPicker();
 initScrollReveal();

@@ -26,21 +26,16 @@
     <!-- ── Hero ── -->
     <section class="hero">
       <div class="hero__heart-wrap">
-        <svg class="hero-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="heart-clip">
-              <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"/>
-            </clipPath>
-          </defs>
-          <g id="sparkles" clip-path="url(#heart-clip)"></g>
-          <path
-            d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
-            fill="none" stroke="#F5EFE8" stroke-width="0.5" opacity="0.15" vector-effect="non-scaling-stroke"/>
+        <div class="hero__canvas-clip">
+          <canvas id="hero-canvas"></canvas>
+        </div>
+        <svg class="hero-heart-outline" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path d="M50 82 C18 64 2 50 2 32 C2 17 12 7 26 7 C35 7 43 12 50 20 C57 12 65 7 74 7 C88 7 98 17 98 32 C98 50 82 64 50 82 Z"
+            fill="none" stroke="#F5EFE8" stroke-width="1" opacity="0.3" vector-effect="non-scaling-stroke"/>
         </svg>
       </div>
       <div class="hero__content">
         <h1 class="hero__name">Heart</h1>
-        <p class="hero__title">La nuit t'appartient.</p>
         <p class="hero__desc">Un bijou. Un bouton. Quelqu'un qui décroche toujours.</p>
         <a href="#inscription" class="btn">Rejoindre la liste d'attente</a>
       </div>
